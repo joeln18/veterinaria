@@ -19,7 +19,6 @@ class CreateMascotasTable extends Migration
             $table->string('raza');
             $table->integer('edad');
             $table->unsignedInteger('users_id');
-            $table->foreign('users_id', 'fk_usersmascotas_users')->references('id')->on('users')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });
     }

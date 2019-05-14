@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Carbon;
+use App\Rol;
 
 class RolTableSeeder extends Seeder
 {
@@ -12,16 +12,11 @@ class RolTableSeeder extends Seeder
      */
     public function run()
     {
-        $rols = [
-            'administrador',
-            'usuario'
-        ];
-        foreach($rols as $key => $value){
-            DB::table('rol')->insert([
-                'nombre' => $value,
-                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
-            ]);
-        }
+        Rol::truncate();
+
+        Rol::create(['nombre' => 'administrador']);
+        Rol::create(['nombre' => 'usuario']);
+            
         
     }
 }
