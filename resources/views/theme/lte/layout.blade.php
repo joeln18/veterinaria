@@ -2,6 +2,7 @@
 <html>
     <head>
     <meta charset="utf-8">
+    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@yield('titulo', 'Veterinaria') | ClaseDesarrollo</title>
     <!-- Tell the browser to be responsive to screen width -->
@@ -42,6 +43,7 @@
                 <div class="content-wrapper">
                         <!-- Content Header (Page header) -->
                     <section class="content">
+                        @include('partials.alerts')
                          @yield("contenido")   
                     </section>
                 </div>

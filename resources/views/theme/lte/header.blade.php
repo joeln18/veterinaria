@@ -4,7 +4,7 @@
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>A</b>LT</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Admin</b>LTE</span>
+          <span class="logo-lg"><b>Veterinaria</b>LTE</span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top">
@@ -109,7 +109,7 @@
                     <img src="{{asset("assets/$theme/dist/img/user2-160x160.jpg")}}" class="img-circle" alt="User Image">
     
                     <p>
-                      Alexander Pierce - Web Developer
+                      Joel Navarro - Web Developer
                       <small>Member since Nov. 2012</small>
                     </p>
                   </li>

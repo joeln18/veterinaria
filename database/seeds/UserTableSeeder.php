@@ -14,17 +14,17 @@ class UserTableSeeder extends Seeder
     {
         User::truncate();
 
-        $adminRol = Rol::where('nombre', 'administrador')->first();
-        $userRol = Rol::where('nombre', 'usuario')->first();
+        $adminRol = Rol::where('name', 'admin')->first();
+        $userRol = Rol::where('name', 'user')->first();
         
         $admin = User::create([
-            'name' => 'Administrador',
+            'name' => 'admin',
             'email' => 'joeln18@hotmail.com',
             'password' => bcrypt('admin')
         ]);
 
         $user = User::create([
-            'name' => 'Usuario',
+            'name' => 'user',
             'email' => 'joel@gmail.com',
             'password' => bcrypt('user')
         ]);

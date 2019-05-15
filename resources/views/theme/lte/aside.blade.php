@@ -7,7 +7,7 @@
               <img src="{{asset("assets/$theme/dist/img/user2-160x160.jpg")}}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-              <p>Alexander Pierce</p>
+              <p>Joel Navarro</p>
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
           </div>
@@ -32,10 +32,7 @@
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
-              <ul class="treeview-menu">
-                <li><a href="../../index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-              </ul>
+              
             </li>
             <li class="treeview active">
               <a href="#">
@@ -52,44 +49,34 @@
                 <li><a href="collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
               </ul>
             </li>
-            <li>
-              <a href="../widgets.html">
-                <i class="fa fa-th"></i> <span>Widgets</span>
-                <span class="pull-right-container">
-                  <small class="label pull-right bg-green">new</small>
-                </span>
-              </a>
-            </li>
+            
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-pie-chart"></i>
-                <span>Charts</span>
+                <i class="fa fa-users"></i>
+                <span>Usuarios</span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-                <li><a href="../charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-                <li><a href="../charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-                <li><a href="../charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+                <li><a href="{{route('admin.users.create')}}"><i class="fa fa-circle-o"></i> Crear</a></li>
+                <li><a href="{{route('admin.users.index')}}"><i class="fa fa-circle-o"></i> Listar</a></li>
               </ul>
             </li>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-laptop"></i>
-                <span>UI Elements</span>
+                <i class="fa fa-paw"></i>
+                <span>Mascotas</span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-                <li><a href="../UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-                <li><a href="../UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-                <li><a href="../UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-                <li><a href="../UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-                <li><a href="../UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
+                <li><a href="../UI/general.html"><i class="fa fa-circle-o"></i> Tus mascotas</a></li>
+                <li><a href="../UI/icons.html"><i class="fa fa-circle-o"></i> Lista general</a></li>
+                <li><a href="../UI/buttons.html"><i class="fa fa-circle-o"></i> Crear</a></li>
+                <li><a href="../UI/sliders.html"><i class="fa fa-circle-o"></i> Editar</a></li>
+                <li><a href="../UI/timeline.html"><i class="fa fa-circle-o"></i> Eliminar</a></li>
               </ul>
             </li>
             <li class="treeview">
