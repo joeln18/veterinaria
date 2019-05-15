@@ -29,7 +29,7 @@ class UserTableSeeder extends Seeder
             'password' => bcrypt('user')
         ]);
         
-        $admin->roles()->attach($adminRol);
-        $user->roles()->attach($userRol);
+        $admin->rols()->attach($adminRol);
+        $user->rols()->attach($userRol);
     }
 }

@@ -13,11 +13,10 @@ class CreateUsersRolTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_rol', function (Blueprint $table) {
+        Schema::create('rol_user', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('rol_id');
-            $table->unsignedInteger('users_id');
-            $table->boolean('estado');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
         });
     }
