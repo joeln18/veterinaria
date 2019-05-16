@@ -25,14 +25,22 @@ Route::get('/', function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home2', 'HomeController@index2')->name('home2');
 
 Route::get('/admin', function(){
     return 'you are admin';
 })->middleware(['auth', 'auth.admin']);
 
+
 Route::prefix('')->namespace('Admin')->prefix('admin')->middleware(['auth', 'auth.admin'])->name('admin.')->group(function(){
     Route::resource('/users', 'UserController');
     Route::resource('/mascotas', 'MascotaController');
+    
+});
+
+Route::prefix('')->namespace('Admin')->prefix('user')->middleware(['auth', 'auth.user'])->name('user.')->group(function(){
+    Route::resource('/users', 'NormalController');
+    Route::resource('/mascotas', 'PetController');
     
 });
 

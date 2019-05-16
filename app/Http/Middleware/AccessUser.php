@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Auth;
 
-class AccessAdmin
+class AccessUser
 {
     /**
      * Handle an incoming request.
@@ -15,12 +15,10 @@ class AccessAdmin
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {   
-        if(Auth::user()->hasAnyRole('admin')){
+    {
+        if(Auth::user()->hasAnyRole('user')){
             return $next($request);
         }
-        
-       
-        return redirect('home2');
+        return redirect('home');
     }
 }
