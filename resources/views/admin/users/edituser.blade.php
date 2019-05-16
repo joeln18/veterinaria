@@ -7,7 +7,7 @@
         <div class="col-lg-12">
             <div class="box box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Permisos</h3>
+                    <h3 class="box-title">Editando a ({{$user->name}})</h3>
                 </div>
                 <div class="box-body">
                     <form action="{{ route('admin.users.update', ['user' => $user->id])}}" method="POST">

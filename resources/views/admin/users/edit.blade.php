@@ -14,15 +14,15 @@
                         @csrf
                         {{ method_field('PUT')}}
                         <select name="rols">
-                        @foreach($rols as $rol)
-                            
-                                <option value="{{$rol->id}}"
-                                    {{$user->hasAnyRole($rol->name)?'checked':''}}>
-                                {{ $rol->name}}</option>
+                            @foreach($rols as $rol)
                                 
-                                
-                        @endforeach
-                    </select>
+                                    <option value="{{$rol->id}}"
+                                        {{$user->hasAnyRole($rol->name)?'checked':''}}>
+                                    {{ $rol->name}}</option>
+                                    
+                                    
+                            @endforeach
+                        </select>
                         <button type="submit" class="btn btn-primary">
                             Actualizar
                         </button>

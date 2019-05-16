@@ -2,6 +2,7 @@
 
 namespace App;
 use App\Rol;
+use App\Mascotas;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -43,6 +44,13 @@ class User extends Authenticatable
         return true;
     }
 
+    public function mascotas(){
+        return $this->hasMany('App\Mascotas');
+        return $this->hasMany('App\Mascotas', 'users_id', 'id');
+    }
+
+
+    
     public function rols(){
         return $this->belongsToMany(Rol::class)->withTimestamps();
     }
@@ -56,7 +64,7 @@ class User extends Authenticatable
     }
 
     public static function create_user($data) {
-        return $this::create([
+        return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),

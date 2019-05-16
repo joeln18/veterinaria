@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
+Use App\User;
+use App\Mascotas;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+Use Illuminate\Support\Facades\Auth;
 
 class MascotaController extends Controller
 {
@@ -14,7 +17,7 @@ class MascotaController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.mascotas.index')->with('mascotas', Mascotas::all());
     }
 
     /**
@@ -23,8 +26,9 @@ class MascotaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {   
+        $users = User::all();
+        return view('admin.mascotas.crear', compact('users'));
     }
 
     /**
@@ -35,7 +39,17 @@ class MascotaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $validatedData = $request->validate([
+            'nombre' => 'required|max:255',
+            'raza' => 'required|max:255',
+            'edad' => 'required|numeric',
+            'users_id' => 'required'
+           ]);
+           
+           $mascota = Mascotas::create($validatedData);
+           
+           return redirect()->route('admin.mascotas.index')->with('success', 'Mascota creada');
     }
 
     /**
@@ -57,7 +71,8 @@ class MascotaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $mascota = Mascotas::findOrFail($id);
+        return view('admin.mascotas.edit', compact('mascota'));
     }
 
     /**
@@ -69,7 +84,20 @@ class MascotaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'nombre' => 'required|max:255',
+            'raza' => 'required|max:255',
+            'edad' => 'required|numeric',
+            'users_id' => 'required'
+        ]);
+
+        Mascotas::whereId($id)->update([
+            'nombre' => $validatedData['nombre'],
+            'raza' => $validatedData['raza'],
+            'edad' => $validatedData['edad'],
+            'users_id' => $validatedData['users_id'],
+        ]);
+        return redirect()->route('admin.mascotas.index')->with('success', 'Actualización exitosa');
     }
 
     /**
@@ -80,6 +108,8 @@ class MascotaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $mascota = Mascotas::findOrFail($id);
+        $mascota->delete();
+        return redirect()->route('admin.mascotas.index')->with('success', 'Usuario eliminado');
     }
 }
