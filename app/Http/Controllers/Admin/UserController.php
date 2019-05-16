@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 Use App\User;
@@ -65,7 +66,11 @@ class UserController extends Controller
          'password' => 'required|min:4'
         ]);
         
-        $user = User::create($validatedData);
+        $user = User::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => Hash::make($validatedData['password'])
+        ]);
         
         return redirect()->route('admin.users.index')->with('success', 'Usuario creado');
         
@@ -93,24 +98,16 @@ class UserController extends Controller
                 'password' => 'required|min:4'
                ]);
             
-            User::whereId($id)->update($validatedData);
+            User::whereId($id)->update([
+                'name' => $validatedData['name'],
+                'email' => $validatedData['email'],
+                'password' => Hash::make($validatedData['password'])
+            ]);
         }
         return redirect()->route('admin.users.index')->with('success', 'Actualización exitosa');
     }
 
-    public function updateUser(Request $request, $id)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'email' => 'required|max:255',
-            'password' => 'required|min:4'
-           ]);
-        
-        User::whereId($id)->update($validatedData);
-        return redirect()->route('admin.users.index')->with('success', 'Actualización exitosa');
-    }
-
-    /**
+   /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -118,6 +115,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('admin.users.index')->with('success', 'Usuario eliminado');
     }
 }

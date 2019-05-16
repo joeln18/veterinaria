@@ -18,6 +18,7 @@
                                 <th>Email</th>
                                 <th>Rol</th>
                                 <th>Acciones</th>
+                                <th>Eliminar</th>
                             </tr>
                             
                         </thead>
@@ -35,9 +36,13 @@
                                         <a href="{{ route('admin.users.show', $user->id)}}">
                                                 <button type="button" class="btn btn-secondary btn-sm">Editar</button>
                                         </a>
-                                        <a href="{{ route('admin.users.edit', $user->id)}}">
-                                                <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
-                                        </a>
+                                    </td>
+                                    <td>
+                                        <form action="{{ route('admin.users.destroy', $user->id)}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

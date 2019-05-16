@@ -55,4 +55,12 @@ class User extends Authenticatable
         return null !== $this->rols()->where('name', $rol)->first();
     }
 
+    public static function create_user($data) {
+        return $this::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+    }
+
 }
