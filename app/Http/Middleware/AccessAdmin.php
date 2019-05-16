@@ -20,6 +20,10 @@ class AccessAdmin
             return $next($request);
         }
         
+        if(Auth::user()->hasAnyRole('user')){
+            return $next($request);
+        }
+
         return redirect('home');
     }
 }

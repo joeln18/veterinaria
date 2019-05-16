@@ -7,21 +7,24 @@
         <div class="col-lg-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Administrar {{$user->name}}</h3>
+                    <h3 class="box-title">Administrar Rol de ({{$user->name}})</h3>
                 </div>
                 <div class="box-body table-responsive no-padding">
                     <form action="{{ route('admin.users.update', ['user' => $user->id])}}" method="POST">
                         @csrf
                         {{ method_field('PUT')}}
+                        <select name="rols">
                         @foreach($rols as $rol)
-                            <div class="form-check">
-                                <input type="checkbox" name="rols[]" value="{{$rol->id}}"
+                            
+                                <option value="{{$rol->id}}"
                                     {{$user->hasAnyRole($rol->name)?'checked':''}}>
-                                <label>{{ $rol->name}}</label>
-                            </div>
+                                {{ $rol->name}}</option>
+                                
+                                
                         @endforeach
+                    </select>
                         <button type="submit" class="btn btn-primary">
-                            Update
+                            Actualizar
                         </button>
                     </form>
                 </div>
