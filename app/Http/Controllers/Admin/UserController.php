@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 Use App\User;
 Use App\Rol;
+Use App\Mascotas;
 Use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
@@ -115,8 +116,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
-        return redirect()->route('admin.users.index')->with('success', 'Usuario eliminado');
+        $mascota = Mascotas::where('users_id', $id)->get();
+        if($mascota==null){
+            $user = User::findOrFail($id);
+            $user->delete();
+            return redirect()->route('admin.users.index')->with('success', 'Usuario eliminado');
+        }
+        return redirect()->route('admin.users.index')->with('warning', 'El usuario tiene mascotas asignadas');
+        
     }
 }
