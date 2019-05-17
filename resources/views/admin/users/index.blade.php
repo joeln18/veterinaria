@@ -1,6 +1,6 @@
 @extends("theme.$theme.layout")
 @section('titulo')
-    Administrar Usuarios
+    
 @endsection
 @section('contenido')
     <div class="row">

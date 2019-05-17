@@ -27,14 +27,9 @@
                                     <input type="text" class="form-control" placeholder="Edad de tu mascota" name="edad">
                             </div>
                             <div class="form-group">
-                                <label for="users_id">Propietario </label>
-                                <select name="users_id">
-                                    @foreach($users as $user)
-                                        <option value="{{$user->id}}">
-                                            {{ $user->name}}({{ $user->id }})
-                                        </option>
-                                    @endforeach
-                                </select>
+                                
+                            <input type="hidden" value={{auth()->user()->id}} class="form-control" placeholder="Edad de tu mascota" name="users_id">
+                                
                             </div>
                         </div>
                                 <!-- /.box-body -->

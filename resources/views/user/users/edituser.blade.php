@@ -10,7 +10,7 @@
                     <h3 class="box-title">Editando a ({{$user->name}})</h3>
                 </div>
                 <div class="box-body">
-                    <form action="{{ route('admin.users.update', ['user' => $user->id])}}" method="POST">
+                    <form action="{{ route('user.users.update', ['user' => $user->id])}}" method="POST">
                         @csrf
                         {{ method_field('PUT')}}
                         <div class="box-body">  

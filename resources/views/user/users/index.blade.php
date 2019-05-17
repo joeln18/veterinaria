@@ -23,20 +23,20 @@
                             
                         </thead>
                         <tbody>
-                            @foreach($users as $user)
+                            
                                 <tr>
                                     <td>{{$user->id}}</td>
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
                                     <td>{{implode(', ', $user->rols()->get()->pluck('name')->toArray())}}</td>
                                     <td>
-                                        <a href="{{ route('admin.users.show', $user->id)}}">
+                                        <a href="{{ route('user.users.edit', $user->id)}}">
                                                 <button type="button" class="btn btn-secondary btn-sm">Editar</button>
                                         </a>
                                     </td>
                                     
                                 </tr>
-                            @endforeach
+                           
                         </tbody>
                     </table>
                 </div>

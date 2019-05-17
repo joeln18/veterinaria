@@ -70,8 +70,15 @@ class PetController extends Controller
      */
     public function edit($id)
     {
+        $idUser = Auth::user()->id;
         $mascota = Mascotas::findOrFail($id);
-        return view('user.mascotas.edit', compact('mascota'));
+        $userId = Mascotas::find($id)->users_id;
+        
+        if($userId == $idUser){
+            return view('user.mascotas.edit', compact('mascota'));
+        }
+        
+        return redirect()->route('user.mascotas.index')->with('warning', 'No tiene permiso para editar esta mascota');
     }
 
     /**
@@ -107,8 +114,19 @@ class PetController extends Controller
      */
     public function destroy($id)
     {
+        $idUser = Auth::user()->id;
         $mascota = Mascotas::findOrFail($id);
-        $mascota->delete();
-        return redirect()->route('user.mascotas.index')->with('success', 'Usuario eliminado');
+        $userId = Mascotas::find($id)->users_id;
+        
+        if($userId == $idUser){
+            $mascota->delete();
+            return redirect()->route('user.mascotas.index')->with('success', 'Usuario eliminado');
+        }
+        
+        return redirect()->route('user.mascotas.index')->with('warning', 'No tiene permiso para editar esta mascota');
+
+        
+        
+        
     }
 }

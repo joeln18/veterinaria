@@ -10,7 +10,7 @@
                     <h3 class="box-title">Administrar Rol de ({{$user->name}})</h3>
                 </div>
                 <div class="box-body table-responsive no-padding">
-                    <form action="{{ route('admin.users.update', ['user' => $user->id])}}" method="POST">
+                    <form action="{{ route('user.users.update', ['user' => $user->id])}}" method="POST">
                         @csrf
                         {{ method_field('PUT')}}
                         <select name="rols">

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 Use App\User;
 Use App\Rol;
+
 Use Illuminate\Support\Facades\Auth;
 class NormalController extends Controller
 {
@@ -16,8 +17,10 @@ class NormalController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('user.users.index')->with('users', User::all());
+    {   
+        $id = Auth::user()->id;
+        //'user' => User::find($id)
+        return view('user.users.index')->with(['user' => User::find($id)]);
     }
 
     /**
@@ -60,7 +63,9 @@ class NormalController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return view('user.users.edituser', compact('user'));
     }
 
     /**
@@ -72,7 +77,18 @@ class NormalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|max:255',
+            'password' => 'required|min:4'
+           ]);
+        
+        User::whereId($id)->update([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => Hash::make($validatedData['password'])
+        ]);
+        return redirect()->route('user.users.index')->with('success', 'Actualización exitosa');
     }
 
     /**
